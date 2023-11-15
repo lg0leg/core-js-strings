@@ -326,7 +326,19 @@ function countVowels(str) {
  *   isPalindrome('No lemon, no melon') => true
  */
 function isPalindrome(str) {
-  return str.split('').reverse().join('').toLowerCase() === str.toLowerCase();
+  const newstr = str
+    .split('')
+    .filter(
+      (val) =>
+        !(
+          val.includes(' ') ||
+          val.includes(',') ||
+          val.includes('!') ||
+          val.includes('?')
+        )
+    )
+    .map((val) => val.toLowerCase());
+  return newstr.join('') === newstr.reverse().join('');
 }
 
 /**
